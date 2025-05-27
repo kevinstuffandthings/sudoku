@@ -2,6 +2,8 @@
 
 module Sudoku
   class Puzzle < Group
+    attr_reader :cells
+
     def self.seed(textfile)
       puzzle = new
       cells = []
@@ -30,17 +32,6 @@ module Sudoku
       Group.new(cells.select { |c| c.rx == rx && c.ry == ry })
     end
 
-    def solve!
-      loop do
-        solves = cells.map(&:solve!).reject(&:nil?).count
-        break if solves.zero?
-      end
-    end
-
-    def solved?
-      cells.all?(&:solved?) && (regions + vectors).all?(&:solved?)
-    end
-
     def render
       (1..9).each do |y|
         puts (1..9).map { |x| cell(x, y).to_s }.join
@@ -49,20 +40,10 @@ module Sudoku
 
     private
 
-    attr_accessor :cells
-
     def initialize
       @cells = []
     end
-
-    def regions
-      @_regions ||= (1..3).flat_map { |y|
-        (1..3).map { |x| region(x, y) }
-      }
-    end
-
-    def vectors
-      @_vectors ||= (1..9).map { |y| row(y) } + (1..9).map { |x| column(x) }
-    end
   end
 end
+
+require_relative "./puzzle/solver"

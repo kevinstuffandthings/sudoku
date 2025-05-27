@@ -9,10 +9,11 @@ namespace :sudoku do
   desc "Solve the sudoko puzzle for the provided config file"
   task :solve, %i[config] => "sudoku:init" do |_, args|
     puzzle = Sudoku::Puzzle.seed(args[:config])
-    puzzle.solve!
+    solver = Sudoku::Puzzle::Solver.new(puzzle)
+    solver.solve
 
     puts
     puzzle.render
-    puts "Solved? #{puzzle.solved? ? "yes".green : "no".red}"
+    puts "Solved? #{solver.solved? ? "yes".green : "no".red}"
   end
 end
