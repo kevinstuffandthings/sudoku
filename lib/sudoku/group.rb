@@ -12,6 +12,10 @@ module Sudoku
       cells.map { |c| c.value }.reject(&:nil?)
     end
 
+    def solved?
+      values.sort.uniq.count == 9
+    end
+
     protected
 
     def initialize(cells)
