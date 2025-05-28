@@ -26,12 +26,21 @@ module Sudoku
         cells.all?(&:assigned?) && groups.all?(&:solved?)
       end
 
+      protected
+
+      def name
+        @_name ||= self.class.name.demodulize
+      end
+
       private
 
       def solvers
         @_solvers ||= [
           Solvers::HiddenSingle,
-          Solvers::HiddenPair
+          Solvers::HiddenPair,
+          Solvers::HiddenTriplet,
+          Solvers::NakedPair,
+          Solvers::PointingPair
         ].map { |s| s.new(puzzle) }
       end
 
@@ -40,7 +49,7 @@ module Sudoku
       end
 
       def vectors
-        @_vectors ||= (1..9).map { |y| row(y) } + (1..9).map { |x| column(x) }
+        @_vectors ||= VALUES.map { |y| row(y) } + VALUES.map { |x| column(x) }
       end
 
       def blocks
@@ -51,7 +60,11 @@ module Sudoku
 end
 
 %w[
+  group_utils
   note_generator
   hidden_single
   hidden_pair
+  hidden_triplet
+  naked_pair
+  pointing_pair
 ].each { |f| require_relative "./solvers/#{f}" }

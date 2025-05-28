@@ -5,6 +5,7 @@ require "colorize"
 module Sudoku
   class Cell
     AlreadyAssignedError = Class.new(StandardError)
+    NotesDepletedError = Class.new(StandardError)
     attr_reader :x, :y, :seed, :notes
 
     def initialize(puzzle, x, y, seed = nil)
@@ -31,13 +32,16 @@ module Sudoku
       groups.each do |group|
         group.cells.each do |mate|
           next if mate.assigned?
-          mate.notes.delete(value)
+
+          mate.notes = mate.notes - [value]
         end
       end
     end
 
     def notes=(notes)
       raise AlreadyAssignedError if assigned?
+      raise NotesDepletedError if notes.empty?
+
       @notes = notes
     end
 

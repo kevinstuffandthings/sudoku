@@ -2,6 +2,7 @@
 
 module Sudoku
   class Puzzle < Group
+    VALUES = (1..9).to_a
     attr_reader :cells
 
     def self.seed(textfile)
@@ -33,8 +34,8 @@ module Sudoku
     end
 
     def render
-      (1..9).each do |y|
-        puts (1..9).map { |x| cell(x, y).to_s }.join
+      VALUES.each do |y|
+        puts VALUES.map { |x| cell(x, y).to_s }.join
       end
     end
 

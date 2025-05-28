@@ -24,7 +24,7 @@ module Sudoku
     end
 
     def solved?
-      values.sort.uniq.count == 9
+      values.sort.uniq.count == Puzzle::VALUES.count
     end
 
     protected

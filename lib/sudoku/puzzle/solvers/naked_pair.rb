@@ -3,17 +3,17 @@
 module Sudoku
   class Puzzle
     module Solvers
-      class HiddenPair < Solver
+      class NakedPair < Solver
         include GroupUtils
 
-        # two cells within a group are the only ones containing a pair of numbers, so
-        # those numbers can be removed from groupmates' notes
+        # two squares contain exactly 2 identical numbers within a group,
+        # so those numbers can be removed from other groupmates' notes
         def execute
           progress = false
 
           groups.each do |group|
             pairs = {}
-            values = build_group_notemap(group).select { |_, v| v.length == 2 }
+            values = build_group_notemap(group)
 
             values.each do |v1, c1|
               values.each do |v2, c2|
@@ -22,14 +22,15 @@ module Sudoku
               end
             end
 
-            pairs.each do |notes, cells|
-              next unless cells.length == 2
+            pairs.each do |notes, pair|
+              next unless notes.length == 2 && pair.length == 2 && pair.all? { |c| c.notes.length == 2 }
 
-              cells.each do |cell|
+              group.cells.each do |cell|
                 old_notes = cell.notes
-                next if old_notes == notes
+                new_notes = old_notes - notes
+                next if cell.assigned? || pair.include?(cell) || old_notes == new_notes
 
-                cell.notes = notes
+                cell.notes = new_notes 
                 puts "#{name}: reducing notes within #{group.type} from #{old_notes} for #{cell.description}"
                 progress = true
               end
