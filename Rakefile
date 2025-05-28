@@ -6,7 +6,7 @@ namespace :sudoku do
     require "sudoku"
   end
 
-  desc "Solve the sudoko puzzle for the provided config file"
+  desc "Solve the sudoku puzzle for the provided config file"
   task :solve, %i[config] => "sudoku:init" do |_, args|
     puzzle = Sudoku::Puzzle.seed(args[:config])
     solver = Sudoku::Puzzle::Solver.new(puzzle)
