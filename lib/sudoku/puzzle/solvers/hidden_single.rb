@@ -9,27 +9,16 @@ module Sudoku
         def execute
           progress = false
 
-          cells.each do |cell|
-            next if cell.assigned?
+          groups.each do |group|
+            values = (1..9).to_a.map { |v| [v, group.cells.select { |c| !c.assigned? && c.notes.include?(v) }] }.to_h
 
-            cell.notes.each do |value|
-              break if cell.assigned?
+            values.each do |value, cells|
+              next unless cells.length == 1
 
-              cell.groups.each do |group|
-                present = false
-
-                group.cells.each do |mate|
-                  next if cell == mate
-                  present = true if mate.notes.include?(value)
-                end
-
-                if !present
-                  cell.value = value
-                  puts "HiddenSingle: exclusive assignment within #{group.type} for #{cell.description}"
-                  progress = true
-                  break
-                end
-              end
+              cell = cells.first
+              cell.value = value
+              puts "HiddenSingle: exclusive assignment within #{group.type} for #{cell.description}"
+              progress = true
             end
           end
 
