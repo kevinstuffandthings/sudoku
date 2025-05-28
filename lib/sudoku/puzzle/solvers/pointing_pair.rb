@@ -6,13 +6,13 @@ module Sudoku
       class PointingPair < Solver
         include GroupUtils
 
-        # 2 squares contained in a single row/column within a block have an exclusive note,
+        # 2 or more squares contained in a single row/column within a block have an exclusive note,
         # so all other squares within that row/column (outside that block) should remove the note
         def execute
           progress = false
 
           blocks.each do |block|
-            values = build_group_notemap(block).select { |_, v| v.length == 2 }
+            values = build_group_notemap(block).select { |_, v| v.length >= 2 }
             block_id = block_id_for(block.cells.first)
 
             values.each do |value, cells|
