@@ -2,7 +2,7 @@
 
 require "active_support/all"
 
-$logger = Logger.new($stdout)
+$logger = Logger.new(STDOUT)
 
 %w[
   cell
