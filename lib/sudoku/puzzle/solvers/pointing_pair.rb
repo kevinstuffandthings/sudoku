@@ -26,7 +26,7 @@ module Sudoku
                 next if old_notes == new_notes
 
                 cell.notes = new_notes
-                puts "#{name}: reducing notes within #{vector.type} from #{old_notes} for #{cell.description}"
+                $logger.info "#{name}: reducing notes within #{vector.type} from #{old_notes} for #{cell.description}"
                 progress = true
               end
             end

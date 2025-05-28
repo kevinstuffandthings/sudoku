@@ -32,7 +32,7 @@ module Sudoku
                 next if old_notes == notes
 
                 cell.notes = notes
-                puts "#{name}: reducing notes within #{group.type} from #{old_notes} for #{cell.description}"
+                $logger.info "#{name}: reducing notes within #{group.type} from #{old_notes} for #{cell.description}"
                 progress = true
               end
             end

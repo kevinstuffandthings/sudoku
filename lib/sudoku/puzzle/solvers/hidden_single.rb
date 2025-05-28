@@ -19,7 +19,7 @@ module Sudoku
               next if cell.assigned?
 
               cell.value = value
-              puts "#{name}: exclusive assignment within #{group.type} for #{cell.description}"
+              $logger.info "#{name}: exclusive assignment within #{group.type} for #{cell.description}"
               progress = true
             end
           end

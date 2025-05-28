@@ -31,7 +31,7 @@ module Sudoku
                 next if cell.assigned? || pair.include?(cell) || old_notes == new_notes
 
                 cell.notes = new_notes 
-                puts "#{name}: reducing notes within #{group.type} from #{old_notes} for #{cell.description}"
+                $logger.info "#{name}: reducing notes within #{group.type} from #{old_notes} for #{cell.description}"
                 progress = true
               end
             end

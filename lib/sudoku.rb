@@ -2,6 +2,8 @@
 
 require "active_support/all"
 
+$logger = Logger.new($stdout)
+
 %w[
   cell
   group
