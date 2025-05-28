@@ -8,15 +8,21 @@ namespace :sudoku do
 
   desc "Solve the sudoku puzzle for the provided config file"
   task :solve, %i[config] => "sudoku:init" do |_, args|
+    require "sudoku/puzzle/renderer"
+
     puzzle = Sudoku::Puzzle.seed(args[:config])
     solver = Sudoku::Puzzle::Solver.new(puzzle)
+    renderer = Sudoku::Puzzle::Renderer.new(puzzle)
+
+    renderer.render
+    puts
 
     start_time = Time.now
     solver.solve
     duration = Time.now - start_time
 
     puts
-    puzzle.render
+    renderer.render
     puts "Solver spent #{duration}s"
     puts "PUZZLE UNSOLVED!".red unless puzzle.solved?
   end

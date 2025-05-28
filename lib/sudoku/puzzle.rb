@@ -33,12 +33,6 @@ module Sudoku
       Group.new(cells.select { |c| c.bx == bx && c.by == by })
     end
 
-    def render
-      VALUES.each do |y|
-        puts VALUES.map { |x| cell(x, y).to_s }.join
-      end
-    end
-
     private
 
     def initialize

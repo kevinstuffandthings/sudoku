@@ -72,12 +72,5 @@ module Sudoku
     def description
       "[#{x},#{y} (B#{bx},#{by})] -> #{value || notes}"
     end
-
-    def to_s
-      text = value&.to_s || "."
-      text = text.blue if (bx + by).odd?
-      text = text.bold if seeded?
-      text
-    end
   end
 end
