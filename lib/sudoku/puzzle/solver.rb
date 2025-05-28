@@ -11,23 +11,27 @@ module Sudoku
       end
 
       def solve
+        Solvers::NoteGenerator.new(puzzle).execute
+
         loop do
-          progress = cells.any? { |c| solve_cell(c) }
+          progress = false
+          solvers.each do |solver|
+            progress = solver.execute || progress
+          end
           break unless progress
         end
       end
 
       def solved?
-        cells.all?(&:solved?) && groups.all?(&:solved?)
+        cells.all?(&:assigned?) && groups.all?(&:solved?)
       end
 
       private
 
-      def solve_cell(cell)
-        return if cell.solved?
-
-        solver = Solvers::Cell.new(puzzle)
-        solver.solve(cell)
+      def solvers
+        @_solvers ||= [
+          Solvers::HiddenSingle
+        ].map { |s| s.new(puzzle) }
       end
 
       def groups
@@ -45,4 +49,7 @@ module Sudoku
   end
 end
 
-%w[cell].each { |f| require_relative "./solvers/#{f}" }
+%w[
+  note_generator
+  hidden_single
+].each { |f| require_relative "./solvers/#{f}" }

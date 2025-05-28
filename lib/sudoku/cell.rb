@@ -5,11 +5,11 @@ require "colorize"
 module Sudoku
   class Cell
     AlreadyAssignedError = Class.new(StandardError)
-    attr_reader :x, :y, :seed, :candidates
+    attr_reader :x, :y, :seed, :notes
 
     def initialize(puzzle, x, y, seed = nil)
       @puzzle, @x, @y, @seed = puzzle, x, y, seed&.to_i
-      @candidates, @value = [], nil
+      @notes, @value = [], nil
     end
 
     def bx
@@ -24,8 +24,29 @@ module Sudoku
       @value || seed
     end
 
+    def value=(value)
+      raise AlreadyAssignedError if assigned?
+      @value, @notes = value, []
+
+      groups.each do |group|
+        group.cells.each do |mate|
+          next if mate.assigned?
+          mate.notes = mate.notes - [value]
+        end
+      end
+    end
+
+    def notes=(notes)
+      raise AlreadyAssignedError if assigned?
+      @notes = notes
+    end
+
     def seeded?
       !seed.nil?
+    end
+
+    def groups
+      @_groups ||= [row, column, block]
     end
 
     def row
@@ -40,17 +61,12 @@ module Sudoku
       @_block ||= @puzzle.block(bx, by)
     end
 
-    def solved?
+    def assigned?
       !value.nil?
     end
 
-    def assign(candidates: [], value: nil)
-      raise AlreadyAssignedError if solved?
-      @candidates, @value = candidates, value
-    end
-
     def description
-      "[#{x},#{y} (B#{bx},#{by})] -> #{value || candidates}"
+      "[#{x},#{y} (B#{bx},#{by})] -> #{value || notes}"
     end
 
     def to_s
