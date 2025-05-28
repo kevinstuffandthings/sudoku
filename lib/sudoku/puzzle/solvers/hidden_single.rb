@@ -15,7 +15,7 @@ module Sudoku
             if cell.notes.length == 1
               value = cell.notes.first
               cell.value = value
-              puts "HiddenSingle: simple assignment of #{value} to #{cell.description}"
+              puts "HiddenSingle: simple assignment for #{cell.description}"
               progress = true
               next
             end
@@ -35,7 +35,7 @@ module Sudoku
 
                 if !present
                   cell.value = value
-                  puts "HiddenSingle: narrowed assignment of #{value} within group to #{cell.description}"
+                  puts "HiddenSingle: exclusive assignment within #{group.type} for #{cell.description}"
                   progress = true
                   break
                 end

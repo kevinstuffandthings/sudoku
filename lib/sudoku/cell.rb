@@ -31,7 +31,7 @@ module Sudoku
       groups.each do |group|
         group.cells.each do |mate|
           next if mate.assigned?
-          mate.notes = mate.notes - [value]
+          mate.notes.delete(value)
         end
       end
     end
