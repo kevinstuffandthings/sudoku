@@ -30,7 +30,8 @@ module Sudoku
 
       def solvers
         @_solvers ||= [
-          Solvers::HiddenSingle
+          Solvers::HiddenSingle,
+          Solvers::HiddenPair
         ].map { |s| s.new(puzzle) }
       end
 
@@ -52,4 +53,5 @@ end
 %w[
   note_generator
   hidden_single
+  hidden_pair
 ].each { |f| require_relative "./solvers/#{f}" }

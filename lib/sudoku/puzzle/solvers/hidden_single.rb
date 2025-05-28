@@ -4,24 +4,14 @@ module Sudoku
   class Puzzle
     module Solvers
       class HiddenSingle < Solver
+       # a cell has a note that is not present in any other one of its group members'
+       # notes, so it should be taken as the value for that cell
         def execute
           progress = false
 
           cells.each do |cell|
             next if cell.assigned?
 
-            # we have exactly one note for a cell, so we know it's the only option,
-            # and it should be taken as the value for a cell
-            if cell.notes.length == 1
-              value = cell.notes.first
-              cell.value = value
-              puts "HiddenSingle: simple assignment for #{cell.description}"
-              progress = true
-              next
-            end
-
-            # a cell has a note that is not present in any other one of its group members'
-            # notes, so it should be taken as the value for that cell
             cell.notes.each do |value|
               break if cell.assigned?
 
