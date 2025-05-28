@@ -52,7 +52,7 @@ module Sudoku
 
       def cell_to_s(cell)
         text = cell.value&.to_s || " "
-        text = text.on_gray if cell.seeded?
+        text = text.bold if cell.seeded?
         text
       end
     end

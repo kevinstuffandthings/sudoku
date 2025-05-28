@@ -31,7 +31,7 @@ $ rake "sudoku:solve[/Users/kevin/Desktop/unsolved-puzzle.txt]"
 The code will run through a series of solution strategies until the puzzle is solved.
 
 ### Examine your output
-Your solved puzzle will be displayed. Note that when running via a terminal, the initial "seed" values will be highlighted.
+Your solved puzzle will be displayed. Note that when running via a terminal, the initial "seed" values will be bolded.
 
 ```
 ┌───┬───┬───┐
