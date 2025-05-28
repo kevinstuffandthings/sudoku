@@ -28,8 +28,8 @@ module Sudoku
       Group.new(cells.select { |c| c.x == x })
     end
 
-    def region(rx, ry)
-      Group.new(cells.select { |c| c.rx == rx && c.ry == ry })
+    def block(bx, by)
+      Group.new(cells.select { |c| c.bx == bx && c.by == by })
     end
 
     def render

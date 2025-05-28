@@ -4,19 +4,20 @@ require "colorize"
 
 module Sudoku
   class Cell
-    attr_reader :x, :y, :seed
+    AlreadyAssignedError = Class.new(StandardError)
+    attr_reader :x, :y, :seed, :candidates
 
     def initialize(puzzle, x, y, seed = nil)
       @puzzle, @x, @y, @seed = puzzle, x, y, seed&.to_i
-      @value = nil
+      @candidates, @value = [], nil
     end
 
-    def rx
-      @_rx ||= ((x - 1) / 3) + 1
+    def bx
+      @_bx ||= ((x - 1) / 3) + 1
     end
 
-    def ry
-      @_ry ||= ((y - 1) / 3) + 1
+    def by
+      @_by ||= ((y - 1) / 3) + 1
     end
 
     def value
@@ -35,33 +36,28 @@ module Sudoku
       @_column ||= @puzzle.column(x)
     end
 
-    def region
-      @_region ||= @puzzle.region(rx, ry)
+    def block
+      @_block ||= @puzzle.block(bx, by)
     end
 
     def solved?
       !value.nil?
     end
 
-    def solve!
-      return if solved?
+    def assign(candidates: [], value: nil)
+      raise AlreadyAssignedError if solved?
+      @candidates, @value = candidates, value
+    end
 
-      solution = candidates
-      puts "[#{x},#{y} (region #{rx},#{ry})] candidates: #{solution}"
-      @value = solution.first if solution.length == 1
+    def description
+      "[#{x},#{y} (B#{bx},#{by})] -> #{value || candidates}"
     end
 
     def to_s
       text = value&.to_s || "."
-      text = text.blue if (rx + ry).odd?
+      text = text.blue if (bx + by).odd?
       text = text.bold if seeded?
       text
-    end
-
-    private
-
-    def candidates
-      (1..9).to_a - row.values - column.values - region.values
     end
   end
 end
