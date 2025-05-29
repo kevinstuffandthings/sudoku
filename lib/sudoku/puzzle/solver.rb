@@ -40,7 +40,8 @@ module Sudoku
           Solvers::HiddenPair,
           Solvers::HiddenTriplet,
           Solvers::NakedPair,
-          Solvers::PointingPair
+          Solvers::PointingPair,
+          Solvers::ClaimingTriplet
         ].map { |s| s.new(puzzle) }
       end
 
@@ -67,4 +68,5 @@ end
   hidden_triplet
   naked_pair
   pointing_pair
+  claiming_triplet
 ].each { |f| require_relative "./solvers/#{f}" }

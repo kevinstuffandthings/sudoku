@@ -25,6 +25,13 @@ module Sudoku
           nil
         end
 
+        def common_block(cells)
+          bx, by = cells.map(&:bx), cells.map(&:by)
+          return unless bx.length == 1 && by.length == 1
+
+          block(bx.first, by.first)
+        end
+
         def block_id_for(cell)
           [:bx, :by].map { |a| cell.public_send(a) }
         end

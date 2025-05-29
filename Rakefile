@@ -12,7 +12,7 @@ namespace :sudoku do
 
     puzzle = Sudoku::Puzzle.seed(args[:config])
     solver = Sudoku::Puzzle::Solver.new(puzzle)
-    renderer = Sudoku::Puzzle::Renderer.new(puzzle)
+    renderer = Sudoku::Puzzle::Renderers::Simple.new(puzzle)
 
     renderer.render
     puts

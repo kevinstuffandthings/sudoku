@@ -5,6 +5,7 @@ require "colorize"
 module Sudoku
   class Cell
     AlreadyAssignedError = Class.new(StandardError)
+    InvalidValueError = Class.new(StandardError)
     NotesDepletedError = Class.new(StandardError)
     attr_reader :x, :y, :seed, :notes
 
@@ -26,10 +27,12 @@ module Sudoku
     end
 
     def value=(value)
-      raise AlreadyAssignedError if assigned?
+      raise AlreadyAssignedError.new("Attempting to reassign value #{value} to cell #{description}") if assigned?
       @value, @notes = value, []
 
       groups.each do |group|
+        raise InvalidValueError.new("Newly assigned value #{value} for cell #{description} renders #{group.type} invalid") unless group.valid?
+
         group.cells.each do |mate|
           next if mate.assigned?
 
@@ -39,8 +42,8 @@ module Sudoku
     end
 
     def notes=(notes)
-      raise AlreadyAssignedError if assigned?
-      raise NotesDepletedError if notes.empty?
+      raise AlreadyAssignedError.new("Attempting to add notes to assigned cell #{description}") if assigned?
+      raise NotesDepletedError.new("Notes depleted for cell #{description}") if notes.empty?
 
       @notes = notes
     end

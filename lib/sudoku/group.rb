@@ -20,11 +20,15 @@ module Sudoku
     end
     
     def values
-      cells.map { |c| c.value }.reject(&:nil?)
+      cells.map { |c| c.value }.compact
     end
 
     def solved?
       values.sort.uniq.count == Puzzle::VALUES.count
+    end
+
+    def valid?
+      values.uniq.count == values.count
     end
 
     protected
