@@ -18,7 +18,12 @@ namespace :sudoku do
     puts
 
     start_time = Time.now
-    solver.solve
+    begin
+      solver.solve
+    rescue => ex
+      renderer = Sudoku::Puzzle::Renderers::Debug.new(puzzle)
+      puts "ERROR: #{ex}", ex.backtrace
+    end
     duration = Time.now - start_time
 
     puts

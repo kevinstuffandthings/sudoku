@@ -28,6 +28,7 @@ module Sudoku
 
     def value=(value)
       raise AlreadyAssignedError.new("Attempting to reassign value #{value} to cell #{description}") if assigned?
+      $logger.debug "Assigning #{value} for cell #{description}"
       @value, @notes = value, []
 
       groups.each do |group|

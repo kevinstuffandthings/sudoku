@@ -34,4 +34,4 @@ module Sudoku
   end
 end
 
-%w[simple].each { |f| require_relative "./renderers/#{f}" }
+%w[simple debug].each { |f| require_relative "./renderers/#{f}" }
