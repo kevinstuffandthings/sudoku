@@ -1,6 +1,36 @@
 # Sudoku Solver
-
 I wanted to play with code (it's been a while), so I wrote this [Sudoku](https://en.wikipedia.org/wiki/Sudoku) solver in Ruby.
+
+## Algorithm
+I recently started playing the Sudoku puzzles that come with my Apple News subscription. In their game's implementation, there's a hint feature that does a nice job of explaining why you should make the decision it's trying to get you to make. So I genericized and then codified those hints into different solvers.
+
+Before any real solving can be done, we run through a `NoteGenerator` that crudely fills in all possible notes for each cell (based purely on row/column/block exclusion). Once that's done, the subsequent steps either use notes to determine values, or use other notes to narrow their own notes (until a value can be determined somewhere). The notes get generated only once, but the subsequent steps are iterated repeatedly until either the puzzle is solved, or no progress is being made. The latter would be indicative of either a poorly-formed puzzle, or a bug in this program.
+
+_Note that "group" refers to either a row, column, or block._
+
+### `HiddenSingle`
+A cell has a note that is not present in any other one of its group members' notes, so it should be taken as the value for that cell.
+![Hidden Single](.images/HiddenSingle.png)
+
+### `HiddenPair`
+Two cells within a group are the only ones containing a pair of numbers, so those numbers can be removed from groupmates' notes.
+![Hidden Pair](.images/HiddenPair.png)
+
+### `HiddenTriplet`
+Three cells within a group are the only ones containing a trio of numbers, so those numbers can be removed from groupmates' notes.
+![Hidden Triplet](.images/HiddenTriplet.png)
+
+### `NakedPair`
+Two squares contain exactly 2 identical numbers within a group, so those numbers can be removed from other groupmates' notes.
+![Naked Pair](.images/NakedPair.png)
+
+### `PointingPair`
+2 (or more) squares contained in a single row/column within a block have an exclusive note, so all other squares within that row/column (outside that block) should remove the note.
+![Pointing Pair](.images/PointingPair.png)
+
+### `ClaimingTriplet`
+3 cells within a block row contain a singular value not found in that row outside the block, so that singular value can be removed from the remainder of the block.
+![Claiming Triplet](.images/ClaimingTriplet.png)
 
 ## Usage
 
