@@ -3,7 +3,7 @@
 require "active_support/all"
 
 $logger = Logger.new(STDOUT)
-$logger.level = :info
+$logger.level = ENV["LOG_LEVEL"].presence || :info
 $logger.formatter = proc do |severity, datetime, progname, msg|
    "#{severity}: #{msg}\n"
 end

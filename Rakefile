@@ -14,8 +14,10 @@ namespace :sudoku do
     solver = Sudoku::Puzzle::Solver.new(puzzle)
     renderer = Sudoku::Puzzle::Renderers::Simple.new(puzzle)
 
-    renderer.render
-    puts
+    if $logger.level <= 1
+      renderer.render
+      puts
+    end
 
     start_time = Time.now
     begin
@@ -26,9 +28,9 @@ namespace :sudoku do
     end
     duration = Time.now - start_time
 
-    puts
+    puts if $logger.level <= 1
     renderer.render
-    puts "Solver spent #{duration}s"
-    puts "PUZZLE UNSOLVED!".red unless puzzle.solved?
+    $logger.info "Solver spent #{duration}s"
+    $logger.error "PUZZLE UNSOLVED!" unless puzzle.solved?
   end
 end

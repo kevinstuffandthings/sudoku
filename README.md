@@ -165,5 +165,7 @@ INFO: HiddenSingle: exclusive assignment within block for C[8,8] -> 7
 │832│564│971│
 │164│792│385│
 └───┴───┴───┘
-Solver spent 0.014216s
+INFO: Solver spent 0.010876s
 ```
+
+_If the output is too verbose for your tastes, set `LOG_LEVEL=warn`._
