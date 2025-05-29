@@ -57,116 +57,113 @@ Your solved puzzle will be displayed. Note that when running via a terminal, the
 
 ```
 ┌───┬───┬───┐
-│   │5 1│   │
-│   │  2│  1│
-│95 │   │   │
+│  3│  6│8  │
+│9  │  3│   │
+│ 8 │ 45│6  │
 ├───┼───┼───┤
-│1  │ 2 │98 │
-│  4│ 7 │1  │
-│8  │   │ 4 │
+│   │   │4  │
+│6 5│   │   │
+│3 1│   │ 5 │
 ├───┼───┼───┤
-│5  │  4│8  │
-│39 │   │5  │
-│   │3  │ 27│
+│   │ 8 │  4│
+│8  │ 6 │9  │
+│  4│79 │  5│
 └───┴───┴───┘
 
-I, [2025-05-29T18:59:39.585238 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [8,2 (B3,1)] -> 5
-I, [2025-05-29T18:59:39.585295 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [3,3 (B1,1)] -> 1
-I, [2025-05-29T18:59:39.585336 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [4,4 (B2,2)] -> 4
-I, [2025-05-29T18:59:39.585420 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [9,8 (B3,3)] -> 4
-I, [2025-05-29T18:59:39.585500 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [3,6 (B1,2)] -> 9
-I, [2025-05-29T18:59:39.585645 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [3,4 (B1,2)] -> 5
-I, [2025-05-29T18:59:39.585697 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [7,6 (B3,2)] -> 7
-I, [2025-05-29T18:59:39.585813 #58452]  INFO -- : HiddenPair: reducing notes within row from [6, 8, 9] for [4,5 (B2,2)] -> [8, 9]
-I, [2025-05-29T18:59:39.585822 #58452]  INFO -- : HiddenPair: reducing notes within row from [3, 5, 6, 8, 9] for [6,5 (B2,2)] -> [8, 9]
-I, [2025-05-29T18:59:39.585895 #58452]  INFO -- : HiddenPair: reducing notes within row from [1, 5, 6, 8, 9] for [5,9 (B2,3)] -> [5, 9]
-I, [2025-05-29T18:59:39.585903 #58452]  INFO -- : HiddenPair: reducing notes within row from [5, 6, 8, 9] for [6,9 (B2,3)] -> [5, 9]
-I, [2025-05-29T18:59:39.586104 #58452]  INFO -- : HiddenPair: reducing notes within block from [2, 3, 5, 6] for [9,5 (B3,2)] -> [2, 5]
-I, [2025-05-29T18:59:39.586112 #58452]  INFO -- : HiddenPair: reducing notes within block from [2, 3, 5, 6] for [9,6 (B3,2)] -> [2, 5]
-I, [2025-05-29T18:59:39.586171 #58452]  INFO -- : HiddenPair: reducing notes within block from [1, 3, 6, 9] for [8,7 (B3,3)] -> [3, 9]
-I, [2025-05-29T18:59:39.586180 #58452]  INFO -- : HiddenPair: reducing notes within block from [3, 6, 9] for [9,7 (B3,3)] -> [3, 9]
-I, [2025-05-29T18:59:39.586367 #58452]  INFO -- : NakedPair: reducing notes within row from [1, 2, 6, 7, 9] for [4,7 (B2,3)] -> [1, 2, 6, 7]
-I, [2025-05-29T18:59:39.586375 #58452]  INFO -- : NakedPair: reducing notes within row from [1, 6, 9] for [5,7 (B2,3)] -> [1, 6]
-I, [2025-05-29T18:59:39.586631 #58452]  INFO -- : NakedPair: reducing notes within column from [2, 3, 6, 8, 9] for [9,1 (B3,1)] -> [3, 6, 8, 9]
-I, [2025-05-29T18:59:39.586639 #58452]  INFO -- : NakedPair: reducing notes within column from [2, 3, 6, 8] for [9,3 (B3,1)] -> [3, 6, 8]
-I, [2025-05-29T18:59:39.586889 #58452]  INFO -- : PointingPair: reducing notes within row from [2, 3, 4, 6] for [7,1 (B3,1)] -> [3, 4, 6]
-I, [2025-05-29T18:59:39.586993 #58452]  INFO -- : PointingPair: reducing notes within row from [3, 4, 6, 8, 9] for [5,1 (B2,1)] -> [3, 4, 6, 8]
-I, [2025-05-29T18:59:39.587026 #58452]  INFO -- : PointingPair: reducing notes within column from [2, 3, 4, 6, 7, 8] for [2,1 (B1,1)] -> [2, 4, 6, 7, 8]
-I, [2025-05-29T18:59:39.587036 #58452]  INFO -- : PointingPair: reducing notes within column from [3, 4, 6, 7, 8] for [2,2 (B1,1)] -> [4, 6, 7, 8]
-I, [2025-05-29T18:59:39.587082 #58452]  INFO -- : PointingPair: reducing notes within row from [2, 5] for [9,6 (B3,2)] -> [2]
-I, [2025-05-29T18:59:39.587203 #58452]  INFO -- : PointingPair: reducing notes within row from [2, 6, 7, 8] for [3,8 (B1,3)] -> [2, 6, 7]
-I, [2025-05-29T18:59:39.587311 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [7,3 (B3,1)] -> 2
-I, [2025-05-29T18:59:39.587346 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [2,4 (B1,2)] -> 7
-I, [2025-05-29T18:59:39.587384 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [9,5 (B3,2)] -> 5
-I, [2025-05-29T18:59:39.587458 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [2,9 (B1,3)] -> 1
-I, [2025-05-29T18:59:39.587576 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [8,8 (B3,3)] -> 1
-I, [2025-05-29T18:59:39.587609 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [9,6 (B3,2)] -> 2
-I, [2025-05-29T18:59:39.587718 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [1,9 (B1,3)] -> 4
-I, [2025-05-29T18:59:39.587736 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [3,9 (B1,3)] -> 8
-I, [2025-05-29T18:59:39.587779 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [7,9 (B3,3)] -> 6
-I, [2025-05-29T18:59:39.587928 #58452]  INFO -- : HiddenPair: reducing notes within column from [2, 4, 6, 8] for [2,1 (B1,1)] -> [4, 8]
-I, [2025-05-29T18:59:39.587935 #58452]  INFO -- : HiddenPair: reducing notes within column from [4, 6, 8] for [2,2 (B1,1)] -> [4, 8]
-I, [2025-05-29T18:59:39.588551 #58452]  INFO -- : NakedPair: reducing notes within block from [3, 6, 7, 9] for [8,1 (B3,1)] -> [6, 7, 9]
-I, [2025-05-29T18:59:39.588561 #58452]  INFO -- : NakedPair: reducing notes within block from [3, 6, 8, 9] for [9,1 (B3,1)] -> [6, 8, 9]
-I, [2025-05-29T18:59:39.588569 #58452]  INFO -- : NakedPair: reducing notes within block from [3, 6, 7] for [8,3 (B3,1)] -> [6, 7]
-I, [2025-05-29T18:59:39.588576 #58452]  INFO -- : NakedPair: reducing notes within block from [3, 6, 8] for [9,3 (B3,1)] -> [6, 8]
-I, [2025-05-29T18:59:39.588926 #58452]  INFO -- : PointingPair: reducing notes within column from [2, 3, 6, 7] for [3,1 (B1,1)] -> [2, 3, 6]
-I, [2025-05-29T18:59:39.588936 #58452]  INFO -- : PointingPair: reducing notes within column from [3, 6, 7] for [3,2 (B1,1)] -> [3, 6]
-I, [2025-05-29T18:59:39.589080 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [5,3 (B2,1)] -> 4
-I, [2025-05-29T18:59:39.590512 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [6,3 (B2,1)] -> 3
-I, [2025-05-29T18:59:39.590544 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [9,4 (B3,2)] -> 3
-I, [2025-05-29T18:59:39.590576 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [2,5 (B1,2)] -> 3
-I, [2025-05-29T18:59:39.590611 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [5,6 (B2,2)] -> 3
-I, [2025-05-29T18:59:39.590645 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [8,7 (B3,3)] -> 3
-I, [2025-05-29T18:59:39.590709 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [2,7 (B1,3)] -> 2
-I, [2025-05-29T18:59:39.590741 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [3,1 (B1,1)] -> 2
-I, [2025-05-29T18:59:39.590779 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [4,8 (B2,3)] -> 2
-I, [2025-05-29T18:59:39.590815 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [5,7 (B2,3)] -> 1
-I, [2025-05-29T18:59:39.590833 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [5,9 (B2,3)] -> 5
-I, [2025-05-29T18:59:39.590868 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [6,6 (B2,2)] -> 5
-I, [2025-05-29T18:59:39.590887 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [6,8 (B2,3)] -> 7
-I, [2025-05-29T18:59:39.590932 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [8,1 (B3,1)] -> 9
-I, [2025-05-29T18:59:39.590966 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [9,7 (B3,3)] -> 9
-I, [2025-05-29T18:59:39.591000 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [3,2 (B1,1)] -> 3
-I, [2025-05-29T18:59:39.591043 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [7,1 (B3,1)] -> 3
-I, [2025-05-29T18:59:39.591060 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [8,3 (B3,1)] -> 7
-I, [2025-05-29T18:59:39.591090 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [1,5 (B1,2)] -> 2
-I, [2025-05-29T18:59:39.591125 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [4,6 (B2,2)] -> 1
-I, [2025-05-29T18:59:39.591594 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [8,5 (B3,2)] -> 6
-I, [2025-05-29T18:59:39.591626 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [3,7 (B1,3)] -> 7
-I, [2025-05-29T18:59:39.591658 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [5,8 (B2,3)] -> 8
-I, [2025-05-29T18:59:39.591676 #58452]  INFO -- : HiddenSingle: exclusive assignment within block for [6,9 (B2,3)] -> 9
-I, [2025-05-29T18:59:39.592299 #58452]  INFO -- : PointingPair: reducing notes within column from [8, 9] for [4,5 (B2,2)] -> [9]
-I, [2025-05-29T18:59:39.592429 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [2,1 (B1,1)] -> 4
-I, [2025-05-29T18:59:39.592447 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [1,1 (B1,1)] -> 7
-I, [2025-05-29T18:59:39.592479 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [7,2 (B3,1)] -> 4
-I, [2025-05-29T18:59:39.592499 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [4,2 (B2,1)] -> 7
-I, [2025-05-29T18:59:39.592540 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [6,4 (B2,2)] -> 6
-I, [2025-05-29T18:59:39.592566 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [6,5 (B2,2)] -> 8
-I, [2025-05-29T18:59:39.592583 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [4,5 (B2,2)] -> 9
-I, [2025-05-29T18:59:39.592611 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [2,6 (B1,2)] -> 6
-I, [2025-05-29T18:59:39.592640 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [4,7 (B2,3)] -> 6
-I, [2025-05-29T18:59:39.592667 #58452]  INFO -- : HiddenSingle: exclusive assignment within row for [3,8 (B1,3)] -> 6
-I, [2025-05-29T18:59:39.592705 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [1,2 (B1,1)] -> 6
-I, [2025-05-29T18:59:39.592733 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [2,2 (B1,1)] -> 8
-I, [2025-05-29T18:59:39.592768 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [4,3 (B2,1)] -> 8
-I, [2025-05-29T18:59:39.592796 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [5,1 (B2,1)] -> 6
-I, [2025-05-29T18:59:39.592817 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [5,2 (B2,1)] -> 9
-I, [2025-05-29T18:59:39.592870 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [9,3 (B3,1)] -> 6
-I, [2025-05-29T18:59:39.592888 #58452]  INFO -- : HiddenSingle: exclusive assignment within column for [9,1 (B3,1)] -> 8
+INFO: HiddenSingle: exclusive assignment within row for C[4,2] -> 8
+INFO: HiddenSingle: exclusive assignment within row for C[8,9] -> 8
+INFO: HiddenSingle: exclusive assignment within column for C[1,1] -> 4
+INFO: HiddenSingle: exclusive assignment within column for C[3,4] -> 8
+INFO: HiddenSingle: exclusive assignment within column for C[5,4] -> 5
+INFO: HiddenSingle: exclusive assignment within column for C[7,2] -> 5
+INFO: HiddenSingle: exclusive assignment within column for C[8,2] -> 4
+INFO: HiddenSingle: exclusive assignment within block for C[2,1] -> 5
+INFO: HiddenSingle: exclusive assignment within block for C[1,7] -> 5
+INFO: HiddenSingle: exclusive assignment within block for C[4,8] -> 5
+INFO: HiddenSingle: exclusive assignment within block for C[8,7] -> 6
+INFO: PointingPair: reducing notes within column from [1, 2, 3, 7] for C[5,5] -> [1, 2, 3]
+INFO: PointingPair: reducing notes within column from [2, 7] for C[5,6] -> [2]
+INFO: PointingPair: reducing notes within column from [1, 2, 3, 6, 9] for C[4,4] -> [1, 2, 3, 6]
+INFO: PointingPair: reducing notes within column from [1, 2, 3, 4, 9] for C[4,5] -> [1, 2, 3, 4]
+INFO: PointingPair: reducing notes within column from [2, 4, 6, 9] for C[4,6] -> [2, 4, 6]
+INFO: PointingPair: reducing notes within column from [1, 2, 3, 7, 9] for C[2,7] -> [1, 2, 3, 7]
+INFO: HiddenSingle: exclusive assignment within row for C[3,7] -> 9
+INFO: HiddenSingle: exclusive assignment within row for C[6,8] -> 4
+INFO: HiddenSingle: exclusive assignment within row for C[2,9] -> 6
+INFO: HiddenSingle: exclusive assignment within column for C[3,2] -> 6
+INFO: HiddenSingle: exclusive assignment within column for C[5,5] -> 3
+INFO: HiddenSingle: exclusive assignment within block for C[4,7] -> 3
+INFO: HiddenPair: reducing notes within column from [1, 2, 7] for C[5,1] -> [1, 7]
+INFO: HiddenPair: reducing notes within column from [1, 2, 7] for C[5,2] -> [1, 7]
+INFO: HiddenPair: reducing notes within block from [1, 2, 9] for C[4,1] -> [2, 9]
+INFO: HiddenPair: reducing notes within block from [1, 2, 9] for C[4,3] -> [2, 9]
+INFO: NakedPair: reducing notes within column from [1, 2, 6] for C[4,4] -> [1, 6]
+INFO: NakedPair: reducing notes within column from [1, 2, 4] for C[4,5] -> [1, 4]
+INFO: NakedPair: reducing notes within column from [2, 4, 6] for C[4,6] -> [4, 6]
+INFO: PointingPair: reducing notes within column from [1, 2, 7, 9] for C[6,4] -> [2, 7, 9]
+INFO: PointingPair: reducing notes within column from [1, 2, 7, 8, 9] for C[6,5] -> [2, 7, 8, 9]
+INFO: PointingPair: reducing notes within column from [2, 7, 9] for C[6,4] -> [7, 9]
+INFO: PointingPair: reducing notes within column from [2, 7, 8, 9] for C[6,5] -> [7, 8, 9]
+INFO: PointingPair: reducing notes within column from [2, 7, 8, 9] for C[6,6] -> [7, 8, 9]
+INFO: HiddenSingle: exclusive assignment within row for C[7,9] -> 3
+INFO: HiddenSingle: exclusive assignment within column for C[2,8] -> 3
+INFO: HiddenSingle: exclusive assignment within column for C[5,6] -> 2
+INFO: HiddenPair: reducing notes within column from [1, 2, 7] for C[7,5] -> [1, 2]
+INFO: HiddenPair: reducing notes within column from [1, 2, 7] for C[7,7] -> [1, 2]
+INFO: PointingPair: reducing notes within row from [2, 7] for C[3,8] -> [2]
+INFO: HiddenSingle: exclusive assignment within row for C[2,7] -> 7
+INFO: HiddenSingle: exclusive assignment within column for C[2,2] -> 1
+INFO: HiddenSingle: exclusive assignment within column for C[3,3] -> 7
+INFO: HiddenSingle: exclusive assignment within column for C[5,1] -> 1
+INFO: HiddenSingle: exclusive assignment within column for C[7,6] -> 7
+INFO: HiddenSingle: exclusive assignment within block for C[1,3] -> 2
+INFO: HiddenSingle: exclusive assignment within block for C[4,1] -> 2
+INFO: HiddenSingle: exclusive assignment within block for C[5,2] -> 7
+INFO: HiddenSingle: exclusive assignment within block for C[9,2] -> 2
+INFO: HiddenSingle: exclusive assignment within block for C[1,4] -> 7
+INFO: HiddenSingle: exclusive assignment within block for C[6,5] -> 7
+INFO: HiddenSingle: exclusive assignment within block for C[1,9] -> 1
+INFO: HiddenSingle: exclusive assignment within block for C[3,8] -> 2
+INFO: HiddenSingle: exclusive assignment within block for C[6,7] -> 1
+INFO: HiddenSingle: exclusive assignment within block for C[7,7] -> 2
+INFO: HiddenPair: reducing notes within row from [1, 3, 9] for C[8,3] -> [1, 3]
+INFO: HiddenPair: reducing notes within row from [1, 3, 9] for C[9,3] -> [1, 3]
+INFO: HiddenSingle: exclusive assignment within row for C[4,3] -> 9
+INFO: HiddenSingle: exclusive assignment within row for C[9,5] -> 8
+INFO: HiddenSingle: exclusive assignment within row for C[6,6] -> 8
+INFO: HiddenSingle: exclusive assignment within row for C[6,9] -> 2
+INFO: HiddenSingle: exclusive assignment within column for C[6,4] -> 9
+INFO: HiddenSingle: exclusive assignment within column for C[7,5] -> 1
+INFO: HiddenSingle: exclusive assignment within block for C[4,4] -> 1
+INFO: HiddenPair: reducing notes within row from [2, 4, 9] for C[2,5] -> [2, 9]
+INFO: HiddenSingle: exclusive assignment within row for C[9,4] -> 6
+INFO: HiddenSingle: exclusive assignment within row for C[4,5] -> 4
+INFO: HiddenSingle: exclusive assignment within row for C[2,6] -> 4
+INFO: HiddenSingle: exclusive assignment within row for C[4,6] -> 6
+INFO: HiddenSingle: exclusive assignment within column for C[2,5] -> 9
+INFO: HiddenSingle: exclusive assignment within column for C[8,1] -> 9
+INFO: HiddenSingle: exclusive assignment within column for C[9,3] -> 3
+INFO: HiddenSingle: exclusive assignment within column for C[9,6] -> 9
+INFO: HiddenSingle: exclusive assignment within block for C[8,3] -> 1
+INFO: HiddenSingle: exclusive assignment within block for C[9,1] -> 7
+INFO: HiddenSingle: exclusive assignment within block for C[2,4] -> 2
+INFO: HiddenSingle: exclusive assignment within block for C[8,5] -> 2
+INFO: HiddenSingle: exclusive assignment within block for C[8,4] -> 3
+INFO: HiddenSingle: exclusive assignment within block for C[9,8] -> 1
+INFO: HiddenSingle: exclusive assignment within block for C[8,8] -> 7
 
 ┌───┬───┬───┐
-│742│561│398│
-│683│792│451│
-│951│843│276│
+│453│216│897│
+│916│873│542│
+│287│945│613│
 ├───┼───┼───┤
-│175│426│983│
-│234│978│165│
-│869│135│742│
+│728│159│436│
+│695│437│128│
+│341│628│759│
 ├───┼───┼───┤
-│527│614│839│
-│396│287│514│
-│418│359│627│
+│579│381│264│
+│832│564│971│
+│164│792│385│
 └───┴───┴───┘
-Solver spent 0.009829s
+Solver spent 0.014216s
 ```

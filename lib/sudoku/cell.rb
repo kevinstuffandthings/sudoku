@@ -74,7 +74,7 @@ module Sudoku
     end
 
     def description
-      "[#{x},#{y} (B#{bx},#{by})] -> #{value || notes}"
+      "C[#{x},#{y}] -> #{value || notes}"
     end
   end
 end
