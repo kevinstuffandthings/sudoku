@@ -38,10 +38,7 @@ module Sudoku
         @_solvers ||= [
           Solvers::HiddenSingle,
           Solvers::HiddenPair,
-          Solvers::HiddenTriplet,
-          Solvers::NakedPair,
-          Solvers::PointingPair,
-          Solvers::ClaimingTriplet
+          Solvers::PointingPair
         ].map { |s| s.new(puzzle) }
       end
 
@@ -65,8 +62,5 @@ end
   note_generator
   hidden_single
   hidden_pair
-  hidden_triplet
-  naked_pair
   pointing_pair
-  claiming_triplet
 ].each { |f| require_relative "./solvers/#{f}" }

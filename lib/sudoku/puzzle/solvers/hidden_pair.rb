@@ -7,7 +7,7 @@ module Sudoku
         include GroupUtils
 
         # two cells within a group are the only ones containing a pair of numbers, so
-        # those numbers can be removed from groupmates' notes
+        # other numbers can be removed from those cells' notes
         def execute
           progress = false
 
