@@ -33,6 +33,22 @@ module Sudoku
       Group.new(cells.select { |c| c.bx == bx && c.by == by })
     end
 
+    def groups
+      @_groups ||= vectors + blocks
+    end
+
+    def vectors
+      @_vectors ||= VALUES.map { |y| row(y) } + VALUES.map { |x| column(x) }
+    end
+
+    def blocks
+      @_blocks ||= (1..3).flat_map { |y| (1..3).map { |x| block(x, y) } }
+    end
+
+    def solved?
+      groups.all?(&:solved?)
+    end
+
     private
 
     def initialize

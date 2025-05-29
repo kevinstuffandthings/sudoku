@@ -4,7 +4,7 @@ module Sudoku
   class Puzzle
     class Solver
       attr_reader :puzzle
-      delegate :cells, :block, :row, :column, to: :puzzle
+      delegate :cells, :block, :row, :column, :groups, :vectors, :blocks, to: :puzzle
 
       def initialize(puzzle)
         @puzzle = puzzle
@@ -38,20 +38,9 @@ module Sudoku
         @_solvers ||= [
           Solvers::HiddenSingle,
           Solvers::HiddenPair,
+          Solvers::NakedPair,
           Solvers::PointingPair
         ].map { |s| s.new(puzzle) }
-      end
-
-      def groups
-        @_groups ||= vectors + blocks
-      end
-
-      def vectors
-        @_vectors ||= VALUES.map { |y| row(y) } + VALUES.map { |x| column(x) }
-      end
-
-      def blocks
-        @_blocks ||= (1..3).flat_map { |y| (1..3).map { |x| block(x, y) } }
       end
     end
   end
@@ -62,5 +51,6 @@ end
   note_generator
   hidden_single
   hidden_pair
+  naked_pair
   pointing_pair
 ].each { |f| require_relative "./solvers/#{f}" }

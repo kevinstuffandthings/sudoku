@@ -3,6 +3,7 @@
 require "active_support/all"
 
 $logger = Logger.new(STDOUT)
+$logger.level = :info
 
 %w[
   cell
