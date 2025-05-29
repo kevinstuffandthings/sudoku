@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "pry"
-
 module Sudoku
   class Puzzle
     module Renderers

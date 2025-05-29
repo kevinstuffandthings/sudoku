@@ -12,19 +12,7 @@ module Sudoku
           progress = false
 
           groups.each do |group|
-            pairs = {}
-            values = build_group_notemap(group)
-
-            values.each do |v1, c1|
-              values.each do |v2, c2|
-                next unless v1 < v2
-                pairs[[v1, v2]] = c1 & c2
-              end
-            end
-
-            pairs.each do |notes, pair|
-              next unless notes.length == 2 && pair.length == 2 && pair.all? { |c| c.notes.length == 2 }
-
+            find_pairs(group).each do |notes, pair|
               group.cells.each do |cell|
                 old_notes = cell.notes
                 new_notes = old_notes - notes
@@ -38,6 +26,22 @@ module Sudoku
           end
 
           progress
+        end
+
+        private
+
+        def find_pairs(group)
+          pairs = {}
+          values = build_group_notemap(group)
+
+          values.each do |v1, c1|
+            values.each do |v2, c2|
+              next unless v1 < v2
+              pairs[[v1, v2]] = c1 & c2
+            end
+          end
+
+          pairs.select { |n, p| n.length == 2 && p.length == 2 && p.all? { |c| c.notes.length == 2 } }
         end
       end
     end
