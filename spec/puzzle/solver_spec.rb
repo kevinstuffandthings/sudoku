@@ -9,14 +9,16 @@ module Sudoku
         expect(examples.length).not_to be_zero
       end
 
-      examples.each do |filename|
-        context filename do
-          let(:puzzle) { Sudoku::Puzzle.from_file(filename) }
-          subject { Sudoku::Puzzle::Solver.new(puzzle) }
+      describe "#solve" do
+        examples.each do |filename|
+          context filename do
+            let(:puzzle) { Sudoku::Puzzle.from_file(filename) }
+            subject { Sudoku::Puzzle::Solver.new(puzzle) }
 
-          it "gets solved" do
-            subject.solve
-            expect(puzzle).to be_solved
+            it "gets solved" do
+              subject.solve
+              expect(puzzle).to be_solved
+            end
           end
         end
       end
