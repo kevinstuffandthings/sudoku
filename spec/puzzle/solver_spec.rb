@@ -10,16 +10,37 @@ module Sudoku
       end
 
       describe "#solve" do
+        subject { Sudoku::Puzzle::Solver.new(puzzle) }
+        before(:each) { subject.solve }
+
         examples.each do |filename|
           context filename do
             let(:puzzle) { Sudoku::Puzzle.from_file(filename) }
-            subject { Sudoku::Puzzle::Solver.new(puzzle) }
 
             it "gets solved" do
-              subject.solve
               expect(puzzle).to be_solved
-              puts "#{subject.utilization}"
             end
+          end
+        end
+
+        xcontext "world's hardest puzzle" do
+          let(:text) do
+            <<~EOF
+              ..53.....
+              8......2.
+              .7..1.5..
+              4....53..
+              .1..7...6
+              ..32...8.
+              .6.5....9
+              ..4....3.
+              .....97..
+            EOF
+          end
+          let(:puzzle) { Sudoku::Puzzle.from_string(text) }
+
+          it "gets solved" do
+            expect(puzzle).to be_solved
           end
         end
       end
