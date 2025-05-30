@@ -24,14 +24,6 @@ Two squares contain exactly 2 identical numbers within a group, so those numbers
 2 (or more) squares contained in a single row/column within a block have an exclusive note, so all other squares within that row/column (outside that block) should remove the note.
 ![Pointing Pair](.readme/PointingPair.png)
 
-### `HiddenTriplet` (rare)
-Three cells within a group are the only ones containing a trio of numbers, so those numbers can be removed from groupmates' notes.
-![Hidden Triplet](.readme/HiddenTriplet.png)
-
-### `ClaimingTriplet` (extremely rare)
-3 cells within a block row contain a singular value not found in that row outside the block, so that singular value can be removed from the remainder of the block.
-![Claiming Triplet](.readme/ClaimingTriplet.png)
-
 ## Usage
 
 ### Set up the puzzle to be solved
