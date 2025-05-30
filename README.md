@@ -10,19 +10,19 @@ _Note that "group" refers to either a row, column, or block._
 
 ### `HiddenSingle`
 A cell has a note that is not present in any other one of its group members' notes, so it should be taken as the value for that cell.
-![Hidden Single](.images/HiddenSingle.png)
+![Hidden Single](.readme/HiddenSingle.png)
 
 ### `HiddenPair`
 Two cells within a group are the only ones containing a pair of numbers, so other numbers can be removed from those cells' notes.
-![Hidden Pair](.images/HiddenPair.png)
+![Hidden Pair](.readme/HiddenPair.png)
 
 ### `NakedPair`
 Two squares contain exactly 2 identical numbers within a group, so those numbers can be removed from other groupmates' notes.
-![Naked Pair](.images/NakedPair.png)
+![Naked Pair](.readme/NakedPair.png)
 
 ### `PointingPair`
 2 (or more) squares contained in a single row/column within a block have an exclusive note, so all other squares within that row/column (outside that block) should remove the note.
-![Pointing Pair](.images/PointingPair.png)
+![Pointing Pair](.readme/PointingPair.png)
 
 ## Usage
 
