@@ -18,6 +18,7 @@ module Sudoku
             it "gets solved" do
               subject.solve
               expect(puzzle).to be_solved
+              puts "#{subject.utilization}"
             end
           end
         end

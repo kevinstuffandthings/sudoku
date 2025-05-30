@@ -9,7 +9,7 @@ module Sudoku
         # a cell has a note that is not present in any other one of its group members'
         # notes, so it should be taken as the value for that cell
         def execute
-          progress = false
+          utilization = 0
 
           groups.each do |group|
             values = build_group_notemap(group).select { |_, v| v.length == 1 }
@@ -20,11 +20,11 @@ module Sudoku
 
               cell.value = value
               $logger.info "#{name}: exclusive assignment within #{group.type} for #{cell.description}"
-              progress = true
+              utilization += 1
             end
           end
 
-          progress
+          utilization
         end
       end
     end

@@ -30,7 +30,7 @@ namespace :sudoku do
 
     puts if $logger.level <= 1
     renderer.render
-    $logger.info "Solver spent #{duration}s"
+    $logger.info "Solver spent #{duration}s: #{solver.utilization}"
     $logger.error "PUZZLE UNSOLVED!" unless puzzle.solved?
   end
 end

@@ -3,11 +3,12 @@
 module Sudoku
   class Puzzle
     class Solver
-      attr_reader :puzzle
+      attr_reader :puzzle, :utilization
       delegate :cells, :block, :row, :column, :groups, :vectors, :blocks, to: :puzzle
 
       def initialize(puzzle)
         @puzzle = puzzle
+        @utilization = Hash.new { |h, k| h[k] = 0 }
       end
 
       def solve
@@ -16,7 +17,10 @@ module Sudoku
         loop do
           progress = false
           solvers.each do |solver|
-            progress = solver.execute || progress
+            if (num_changes = solver.execute) > 0
+              progress = true
+              utilization[solver.name.to_sym] += num_changes
+            end
           end
           break unless progress
         end
@@ -39,7 +43,9 @@ module Sudoku
           Solvers::HiddenSingle,
           Solvers::HiddenPair,
           Solvers::NakedPair,
-          Solvers::PointingPair
+          Solvers::PointingPair,
+          Solvers::HiddenTriplet,
+          Solvers::ClaimingTriplet
         ].map { |s| s.new(puzzle) }
       end
     end
@@ -53,4 +59,6 @@ end
   hidden_pair
   naked_pair
   pointing_pair
+  hidden_triplet
+  claiming_triplet
 ].each { |f| require_relative "./solvers/#{f}" }

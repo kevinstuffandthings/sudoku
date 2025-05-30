@@ -3,27 +3,29 @@
 module Sudoku
   class Puzzle
     module Solvers
-      class HiddenPair < Solver
+      class HiddenTriplet < Solver
         include GroupUtils
 
-        # two cells within a group are the only ones containing a pair of numbers, so
-        # other numbers can be removed from those cells' notes
+        # three cells within a group are the only ones containing a trio of numbers, so
+        # those numbers can be removed from groupmates' notes
         def execute
           utilization = 0
 
           groups.each do |group|
-            pairs = {}
-            values = build_group_notemap(group).select { |_, v| v.length == 2 }
+            triplets = {}
+            values = build_group_notemap(group).select { |_, v| v.length == 3 }
 
             values.each do |v1, c1|
               values.each do |v2, c2|
-                next unless v1 < v2
-                pairs[[v1, v2]] = c1 & c2
+                values.each do |v3, c3|
+                  next unless v1 < v2 && v2 < v3
+                  triplets[[v1, v2, v3]] = c1 & c2 & c3
+                end
               end
             end
 
-            pairs.each do |notes, cells|
-              next unless cells.length == 2
+            triplets.each do |notes, cells|
+              next unless cells.length == 3
 
               cells.each do |cell|
                 old_notes = cell.notes

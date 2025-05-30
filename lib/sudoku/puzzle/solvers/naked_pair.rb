@@ -9,7 +9,7 @@ module Sudoku
         # two squares contain exactly 2 identical numbers within a group,
         # so those numbers can be removed from other groupmates' notes
         def execute
-          progress = false
+          utilization = 0
 
           groups.each do |group|
             find_pairs(group).each do |notes, pair|
@@ -20,12 +20,12 @@ module Sudoku
 
                 cell.notes = new_notes 
                 $logger.info "#{name}: reducing notes within #{group.type} from #{old_notes} for #{cell.description}"
-                progress = true
+                utilization += 1
               end
             end
           end
 
-          progress
+          utilization
         end
 
         private

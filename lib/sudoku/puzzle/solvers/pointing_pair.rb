@@ -9,7 +9,7 @@ module Sudoku
         # 2 or more squares contained in a single row/column within a block have an exclusive note,
         # so all other squares within that row/column (outside that block) should remove the note
         def execute
-          progress = false
+          utilization = 0
 
           blocks.each do |block|
             values = build_group_notemap(block).select { |_, v| v.length >= 2 }
@@ -27,12 +27,12 @@ module Sudoku
 
                 cell.notes = new_notes
                 $logger.info "#{name}: reducing notes within #{vector.type} from #{old_notes} for #{cell.description}"
-                progress = true
+                utilization += 1
               end
             end
           end
 
-          progress
+          utilization
         end
       end
     end
