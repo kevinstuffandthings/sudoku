@@ -3,7 +3,13 @@
 module Sudoku
   class Puzzle
     describe Solver do
-      Dir["spec/puzzle/puzzles/*.sudoku"].each do |filename|
+      examples = Dir["spec/puzzle/examples/*.sudoku"] 
+
+      it "has some examples to work with" do
+        expect(examples.length).not_to be_zero
+      end
+
+      examples.each do |filename|
         context filename do
           let(:puzzle) { Sudoku::Puzzle.from_file(filename) }
           subject { Sudoku::Puzzle::Solver.new(puzzle) }
