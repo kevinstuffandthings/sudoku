@@ -10,7 +10,7 @@ namespace :sudoku do
   task :solve, %i[config] => "sudoku:init" do |_, args|
     require "sudoku/puzzle/renderer"
 
-    puzzle = Sudoku::Puzzle.seed(args[:config])
+    puzzle = Sudoku::Puzzle.from_file(args[:config])
     solver = Sudoku::Puzzle::Solver.new(puzzle)
     renderer = Sudoku::Puzzle::Renderers::Simple.new(puzzle)
 
