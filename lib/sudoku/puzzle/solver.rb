@@ -15,14 +15,13 @@ module Sudoku
         Solvers::NoteGenerator.new(puzzle).execute
 
         loop do
-          progress = false
+          sum = puzzle.md5sum
           solvers.each do |solver|
             if (num_changes = solver.execute) > 0
-              progress = true
               utilization[solver.name.to_sym] += num_changes
             end
           end
-          break unless progress
+          break if puzzle.md5sum == sum
         end
       end
 
@@ -43,7 +42,9 @@ module Sudoku
           Solvers::HiddenSingle,
           Solvers::HiddenPair,
           Solvers::NakedPair,
-          Solvers::PointingPair
+          Solvers::PointingPair,
+          Solvers::HiddenTriplet,
+          Solvers::ClaimingTriplet
         ].map { |s| s.new(puzzle) }
       end
     end
@@ -57,4 +58,6 @@ end
   hidden_pair
   naked_pair
   pointing_pair
+  hidden_triplet
+  claiming_triplet
 ].each { |f| require_relative "./solvers/#{f}" }

@@ -76,5 +76,9 @@ module Sudoku
     def description
       "C[#{x},#{y}] -> #{value || notes}"
     end
+
+    def md5sum
+      Digest::MD5.hexdigest(description)
+    end
   end
 end

@@ -23,24 +23,47 @@ module Sudoku
           end
         end
 
-        xcontext "world's hardest puzzle" do
-          let(:text) do
-            <<~EOF
-              ..53.....
-              8......2.
-              .7..1.5..
-              4....53..
-              .1..7...6
-              ..32...8.
-              .6.5....9
-              ..4....3.
-              .....97..
-            EOF
-          end
+        xcontext "world's hardest puzzles" do
           let(:puzzle) { Sudoku::Puzzle.from_string(text) }
 
-          it "gets solved" do
-            expect(puzzle).to be_solved
+          context "example 1" do
+            let(:text) do
+              <<~EOF
+                ..53.....
+                8......2.
+                .7..1.5..
+                4....53..
+                .1..7...6
+                ..32...8.
+                .6.5....9
+                ..4....3.
+                .....97..
+              EOF
+            end
+
+            it "gets solved" do
+              expect(puzzle).to be_solved
+            end
+          end
+
+          context "example 2" do
+            let(:text) do
+              <<~EOF
+                8........
+                ..36.....
+                .7..9.2..
+                .5...7...
+                ....457..
+                ...1...3.
+                ..1....68
+                ..85...1.
+                .9....4..
+              EOF
+            end
+
+            it "gets solved" do
+              expect(puzzle).to be_solved
+            end
           end
         end
       end

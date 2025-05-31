@@ -54,6 +54,15 @@ module Sudoku
       groups.all?(&:solved?)
     end
 
+    def md5sum
+      Digest::MD5.hexdigest(cells.map(&:md5sum).join("|"))
+    end
+
+    def clone
+      text = VALUES.map { |x| row(x).cells.map { |c| c.value || "." }.join }.join("\n")
+      self.class.from_string(text)
+    end
+
     private
 
     def initialize
