@@ -31,7 +31,7 @@ module Sudoku
               cells.each do |cell|
                 old_notes = cell.notes
                 new_notes = (old_notes & notes).sort
-                next if old_notes == notes
+                next if old_notes == new_notes
 
                 cell.notes = new_notes
                 $logger.info "#{name}: reducing notes within #{group.type} from #{old_notes} for #{cell.description}"

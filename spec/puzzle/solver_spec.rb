@@ -10,8 +10,15 @@ module Sudoku
       end
 
       describe "#solve" do
+        utilization = Hash.new { |h, k| h[k] = 0 }
         subject { Sudoku::Puzzle::Solver.new(puzzle) }
         before(:each) { subject.solve }
+        after(:all) do
+          puts "\n  Solver utilization:"
+          utilization.each do |name, quantity|
+            puts "  - #{name}: #{quantity}"
+          end
+        end
 
         examples.each do |filename|
           context filename do
@@ -19,6 +26,7 @@ module Sudoku
 
             it "gets solved" do
               expect(puzzle).to be_solved
+              utilization.merge!(subject.utilization) { |_, o, n| o + n }
             end
           end
         end
