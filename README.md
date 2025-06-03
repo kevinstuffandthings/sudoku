@@ -60,7 +60,7 @@ $ rake "sudoku:solve[/Users/kevin/Desktop/unsolved-puzzle.txt]"
 # or redirect the file in
 $ rake sudoku:solve < /Users/kevin/Desktop/unsolved-puzzle.txt
 
-# or use a HEREDOC
+# or use a HEREDOC if you hate files
 $ rake sudoku:solve <<_EOF_
 ...5.1...
 .....2..1
