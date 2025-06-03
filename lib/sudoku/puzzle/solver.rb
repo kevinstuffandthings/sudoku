@@ -39,6 +39,7 @@ module Sudoku
 
       def solvers
         @_solvers ||= [
+          Solvers::Single,
           Solvers::HiddenSingle,
           Solvers::HiddenPair,
           Solvers::NakedPair,
@@ -54,6 +55,7 @@ end
 %w[
   group_utils
   note_generator
+  single
   hidden_single
   hidden_pair
   naked_pair
