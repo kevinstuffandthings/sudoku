@@ -37,11 +37,11 @@ module Sudoku
           values.each do |v1, c1|
             values.each do |v2, c2|
               next unless v1 < v2
-              pairs[[v1, v2]] = c1 & c2
+              pairs[[v1, v2]] = (c1 & c2).select { |c| c.notes == [v1, v2] }
             end
           end
 
-          pairs.select { |n, p| n.length == 2 && p.length == 2 && p.all? { |c| c.notes.length == 2 } }
+          pairs.select { |n, p| p.length == 2 && p.all? { |c| c.notes.length == 2 } }
         end
       end
     end
