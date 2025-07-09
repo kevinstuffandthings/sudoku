@@ -27,7 +27,7 @@ module Sudoku
 
         def common_block(cells)
           bx, by = cells.map(&:bx), cells.map(&:by)
-          return unless bx.length == 1 && by.length == 1
+          return unless bx.uniq.length == 1 && by.uniq.length == 1
 
           block(bx.first, by.first)
         end
